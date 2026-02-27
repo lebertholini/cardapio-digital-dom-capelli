@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cardápio Dom Capelli</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+}
+
+body {
+    background: #000;
+    font-family: Arial, sans-serif;
+}
+
+/* ========================= */
+/* PÁGINAS */
+/* ========================= */
+
+.page {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page img {
+    height: 100vh;
+    width: auto;
+    max-width: 100%;
+    display: block;
+}
+
+/* ========================= */
+/* WHATSAPP PADRÃO (2–28) */
+/* ========================= */
+
+.whatsapp-default {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: #25D366;
+    color: #fff;
+
+    font-size: 28px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+
+    padding: 20px 45px;
+    border-radius: 50px;
+    text-decoration: none;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+/* ========================= */
+/* PÁGINA 30 - MEIO EXATO */
+/* ========================= */
+
+.page30-buttons {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+/* WhatsApp grande */
+.whatsapp-30 {
+    background: #25D366;
+    color: #fff;
+
+    font-size: 34px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+
+    padding: 28px 70px;
+    border-radius: 60px;
+    text-decoration: none;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+/* Localização */
+.location-30 {
+    background: #FFC107;
+    color: #000;
+
+    font-size: 32px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+
+    padding: 25px 65px;
+    border-radius: 60px;
+    text-decoration: none;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+</style>
+</head>
+<body>
+
+<script>
+const totalPages = 30;
+
+for (let i = 1; i <= totalPages; i++) {
+
+    const page = document.createElement("div");
+    page.className = "page";
+
+    const img = document.createElement("img");
+    img.src = "images/pagina" + i + ".jpg";
+    img.alt = "Página " + i;
+
+    page.appendChild(img);
+
+    // =========================
+    // WHATSAPP PADRÃO (2 a 28)
+    // =========================
+    if (i !== 1 && i !== 29 && i !== 30) {
+        const whatsapp = document.createElement("a");
+        whatsapp.href = "https://wa.me/5511958100998";
+        whatsapp.target = "_blank";
+        whatsapp.className = "whatsapp-default";
+        whatsapp.textContent = "FAÇA O SEU PEDIDO";
+        page.appendChild(whatsapp);
+    }
+
+    // =========================
+    // PÁGINA 30 - MEIO
+    // =========================
+    if (i === 30) {
+
+        const container = document.createElement("div");
+        container.className = "page30-buttons";
+
+        const whatsapp30 = document.createElement("a");
+        whatsapp30.href = "https://wa.me/5511958100998";
+        whatsapp30.target = "_blank";
+        whatsapp30.className = "whatsapp-30";
+        whatsapp30.textContent = "FAÇA O SEU PEDIDO";
+
+        const location30 = document.createElement("a");
+        location30.href = "https://maps.app.goo.gl/sxdKp8x4FJ6VaTLx7";
+        location30.target = "_blank";
+        location30.className = "location-30";
+        location30.textContent = "📍 Localização";
+
+        container.appendChild(whatsapp30);
+        container.appendChild(location30);
+
+        page.appendChild(container);
+    }
+
+    document.body.appendChild(page);
+}
+</script>
+
+</body>
+</html>
